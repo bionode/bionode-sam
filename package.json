@@ -1,0 +1,43 @@
+{
+  "name": "bionode-sam",
+  "description": "Node.js wrapper for samtools.",
+  "version": "0.0.1",
+  "homepage": "http://github.com/bionode/bionode-sam",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bmpvieira/bionode-sam.git"
+  },
+  "author": {
+    "name": "Bruno Vieira",
+    "email": "mail@bmpvieira.com"
+  },
+  "dependencies": {
+    "through2": "~0.5.1"
+  },
+  "devDependencies": {
+    "mocha": "~1.21.3",
+    "mocha-lcov-reporter": "0.0.1",
+    "should": "~4.0.4",
+    "istanbul": "~0.3.0",
+    "coveralls": "~2.11.1"
+  },
+  "keywords": [
+    "bioinformatics",
+    "samtools",
+    "wrapper",
+    "installer",
+    "streams",
+    "cli"
+  ],
+  "main": "index.js",
+  "bin": {
+    "bionode-sam": "cli.js"
+  },
+  "scripts": {
+    "preinstall": "git clone -b master https://github.com/samtools/samtools.git; cd samtools; git checkout 0.2.0-rc11; make",
+    "test": "mocha --reporter spec",
+    "coverage": "istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -R spec && rm -rf ./coverage",
+    "coveralls": "istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls && rm -rf ./coverage"
+  },
+  "license": "MIT"
+}
