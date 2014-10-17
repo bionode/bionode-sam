@@ -34,7 +34,7 @@
     "bionode-sam": "cli.js"
   },
   "scripts": {
-    "preinstall": "git clone -b master https://github.com/samtools/samtools.git; cd samtools; git checkout 0.2.0-rc11; make",
+    "preinstall": "sam/build.sh",
     "test": "mocha --reporter spec",
     "coverage": "istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -R spec && rm -rf ./coverage",
     "coveralls": "istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls && rm -rf ./coverage"
