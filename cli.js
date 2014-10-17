@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var through = require('through2')
 var bionodeSAM = require('./')
 
