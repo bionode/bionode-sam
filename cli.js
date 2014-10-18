@@ -7,7 +7,6 @@ var args = process.argv.slice(2)
 var command = args[0] //args.length > 2 ? args.slice(0, args.length-2) : null
 var srdDest
 
-console.log(command)
 // if (args.length === 0) { throw Error('Please specify command and files') }
 // else if (args.length === 1) { throw Error('Please provide a SRA file') }
 // else if (args.length === 2) { srcDest = args[1] + ' .' }
@@ -16,12 +15,32 @@ console.log(command)
 
 var sam = bionodeSAM(command)
 
-var samStream = sam(args)
+process.stdin.setEncoding('utf8');
 
-samStream.on('data', function(data) {
-  process.stdout.write(data[0]+' -> '+data[1]+'\n')
-})
+if (!process.stdin.isTTY) {
+  process.stdin.on('data', function(data) {
+    var data = data.trim()
+    if (data === '') { return }
+    args.push(data.trim())
+    var samStream = sam(args)
+    samStream.pipe(JSONstringify()).pipe(process.stdout)
+    samStream.on('error', console.log)
+  })
+}
 
-samStream.on('error', function(error) {
-  console.error(error)
-})
+else {
+  var samStream = sam(args)
+  samStream.pipe(JSONstringify()).pipe(process.stdout)
+  samStream.on('error', console.log)
+}
+
+function JSONstringify() {
+  var stream = through.obj(transform)
+  return stream
+  function transform(obj, enc, next) {
+    try { obj = JSON.stringify(obj) }
+    catch(e) {}
+    if (obj !== '') { this.push(obj + '\n') }
+    next()
+  }
+}
