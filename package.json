@@ -1,7 +1,7 @@
 {
   "name": "bionode-sam",
   "description": "Node.js wrapper for samtools.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "homepage": "http://github.com/bionode/bionode-sam",
   "repository": {
     "type": "git",
