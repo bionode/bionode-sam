@@ -5,7 +5,7 @@
   "homepage": "http://github.com/bionode/bionode-sam",
   "repository": {
     "type": "git",
-    "url": "git://github.com/bmpvieira/bionode-sam.git"
+    "url": "git://github.com/bionode/bionode-sam.git"
   },
   "author": {
     "name": "Bruno Vieira",
