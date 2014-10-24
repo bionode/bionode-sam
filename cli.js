@@ -1,10 +1,18 @@
 #!/usr/bin/env node
 var through = require('through2')
+var minimist = require('minimist')
 var bionodeSAM = require('./')
 
-var args = process.argv.slice(2)
+var args = minimist(process.argv.slice(2))
 
-var command = args[0] //args.length > 2 ? args.slice(0, args.length-2) : null
+var command = args._[0]
+var lastArg = args._[args._.length - 1]
+var wantsStdin = false
+if (lastArg === '-') {
+  wantsStdin = true
+  args._.pop()
+}
+
 var srdDest
 
 // if (args.length === 0) { throw Error('Please specify command and files') }
@@ -15,21 +23,19 @@ var srdDest
 
 var sam = bionodeSAM(command)
 
-process.stdin.setEncoding('utf8');
-
-if (!process.stdin.isTTY) {
+if (wantsStdin) {
+  process.stdin.setEncoding('utf8');
+  
   process.stdin.on('data', function(data) {
     var data = data.trim()
     if (data === '') { return }
     args.push(data.trim())
-    var samStream = sam(args)
+    var samStream = sam(args._)
     samStream.pipe(JSONstringify()).pipe(process.stdout)
     samStream.on('error', console.log)
   })
-}
-
-else {
-  var samStream = sam(args)
+} else {
+  var samStream = sam(args._)
   samStream.pipe(JSONstringify()).pipe(process.stdout)
   samStream.on('error', console.log)
 }
