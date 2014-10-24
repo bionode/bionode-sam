@@ -29,7 +29,7 @@ if (wantsStdin) {
   process.stdin.on('data', function(data) {
     var data = data.trim()
     if (data === '') { return }
-    args.push(data.trim())
+    args._.push(data.trim())
     var samStream = sam(args._)
     samStream.pipe(JSONstringify()).pipe(process.stdout)
     samStream.on('error', console.log)
