@@ -12,15 +12,17 @@
     "email": "mail@bmpvieira.com"
   },
   "dependencies": {
-    "through2": "~0.5.1",
-    "minimist": "^1.1.0"
+    "minimist": "^1.2.0",
+    "through2": "^2.0.3"
   },
   "devDependencies": {
-    "mocha": "~1.21.3",
-    "mocha-lcov-reporter": "0.0.1",
-    "should": "~4.0.4",
-    "istanbul": "~0.3.0",
-    "coveralls": "~2.11.1"
+    "coveralls": "~2.13.1",
+    "dependency-check": "^2.8.0",
+    "istanbul": "~0.4.5",
+    "mocha": "~3.4.2",
+    "mocha-lcov-reporter": "1.3.0",
+    "should": "~11.2.1",
+    "standard": "^10.0.2"
   },
   "keywords": [
     "bio",
@@ -40,7 +42,7 @@
   },
   "scripts": {
     "preinstall": "sam/build.sh",
-    "test": "mocha --reporter spec",
+    "test": "standard && dependency-check . && mocha --reporter spec",
     "coverage": "istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -R spec && rm -rf ./coverage",
     "coveralls": "istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls && rm -rf ./coverage"
   },
