@@ -13,8 +13,6 @@ if (lastArg === '-') {
   args._.pop()
 }
 
-var srdDest
-
 // if (args.length === 0) { throw Error('Please specify command and files') }
 // else if (args.length === 1) { throw Error('Please provide a SRA file') }
 // else if (args.length === 2) { srcDest = args[1] + ' .' }
@@ -24,10 +22,10 @@ var srdDest
 var sam = bionodeSAM(command)
 
 if (wantsStdin) {
-  process.stdin.setEncoding('utf8');
-  
-  process.stdin.on('data', function(data) {
-    var data = data.trim()
+  process.stdin.setEncoding('utf8')
+
+  process.stdin.on('data', function (data) {
+    data = data.trim()
     if (data === '') { return }
     args._.push(data.trim())
     var samStream = sam(args._)
@@ -40,12 +38,11 @@ if (wantsStdin) {
   samStream.on('error', console.log)
 }
 
-function JSONstringify() {
+function JSONstringify () {
   var stream = through.obj(transform)
   return stream
-  function transform(obj, enc, next) {
-    try { obj = JSON.stringify(obj) }
-    catch(e) {}
+  function transform (obj, enc, next) {
+    try { obj = JSON.stringify(obj) } catch (e) {}
     if (obj !== '') { this.push(obj + '\n') }
     next()
   }
