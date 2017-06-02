@@ -5,70 +5,71 @@
   <br/>
   <a href="http://bionode.io/">bionode.io</a>
 </p>
+
+
 # bionode-sam (*work in progress*)
-<!-- [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coveralls Status][coveralls-image]][coveralls-url] [![Dependency Status][depstat-image]][depstat-url] [![DOI][doi-image]][doi-url] -->
 
 > A Node.js wrapper for the Burrow-Wheeler Aligner (BWA).
 
-Install
--------
+[![npm](https://img.shields.io/npm/v/bionode-sam.svg?style=flat-square)](http://npmjs.org/package/bionode-sam)
+[![Travis](https://img.shields.io/travis/bionode/bionode-sam.svg?style=flat-square)](https://travis-ci.org/bionode/bionode-sam)
+[![Coveralls](https://img.shields.io/coveralls/bionode/bionode-sam.svg?style=flat-square)](http://coveralls.io/r/bionode/bionode-sam)
+[![Dependencies](http://img.shields.io/david/bionode/bionode-sam.svg?style=flat-square)](http://david-dm.org/bionode/bionode-sam)
+[![npm](https://img.shields.io/npm/dt/bionode-sam.svg?style=flat-square)](https://www.npmjs.com/package/bionode-sam)
+[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/bionode/bionode)
 
-Install bionode-sam with [npm](http://npmjs.org/bionode-sam):
 
-```sh
-$ npm install bionode-sam
+## Install
+
+You need to install the latest Node.JS first, please check [nodejs.org](http://nodejs.org) or do the following:
+
+```bash
+# Ubuntu
+sudo apt-get install npm
+# Mac
+brew install node
+# Both
+npm install -g n
+n stable
 ```
-To use it as a command line tool, you can install it globally by adding ```-g``` .
 
-Usage
------
+To use `bionode-sam` as a command line tool, you can install it globally with `-g`.
+
+```bash
+npm install bionode-sam -g
+```
+
+Or, if you want to use it as a JavaScript library, you need to install it in your local project folder inside the `node_modules` directory by doing the same command **without** `-g`.
+
+```bash
+npm i bionode-sam # 'i' can be used as shortcut to 'install'
+```
+
+
+## Usage
 
 This module is still a work in progress, so you shouldn't be using it unless you know what you're doing.
 
-Contributing
-------------
 
-To contribute, clone this repo locally and commit your code on a separate branch.
+## Documentation
 
-Please write unit tests for your code, and check that everything works by running the following before opening a pull-request:
+Check our documentation at [doc.bionode.io](http://doc.bionode.io) or do:
 
-```sh
-$ npm test
+```bash
+bionode-sam --help
 ```
 
-Please also check for code coverage:
 
-```sh
-$ npm run coverage
-```
+## Contributing
 
-To rebuild the documentation using the comments in the code:
+We welcome all kinds of contributions at all levels of experience, please read the [CONTRIBUTING.md](CONTRIBUTING.md) to get started!
 
-```sh
-$ npm run build-docs
-```
-Check the [issues](http://github.com/bionode/bionode-sam/issues) for ways to contribute.
 
-Contacts
---------
-Bruno Vieira <[mail@bmpvieira.com](mailto:mail@bmpvieira.com)> [@bmpvieira](//twitter.com/bmpvieira)  
-For samtools support check [its repo](https://github.com/samtools/samtools).
+## Communication channels
 
-License
--------
+Don't be shy! Come talk to us :smiley:
 
-bionode-sam is licensed under the [MIT](https://raw.github.com/bionode/bionode/master/LICENSE) license.  
-Check [ChooseALicense.com](http://choosealicense.com/licenses/mit) for details.
-
-[npm-url]: //npmjs.org/package/bionode-sam
-[npm-image]: https://badge.fury.io/js/bionode-sam.png
-[travis-url]: //travis-ci.org/bionode/bionode-sam
-[travis-image]: https://travis-ci.org/bionode/bionode-sam.png?branch=master
-[coveralls-url]: //coveralls.io/r/bionode/bionode-sam
-[coveralls-image]: https://coveralls.io/repos/bionode/bionode-sam/badge.png
-[depstat-url]: http://david-dm.org/bionode/bionode-sam
-[depstat-image]: http://david-dm.org/bionode/bionode-sam.png
-[doi-url]: http://dx.doi.org/
-[doi-image]: https://zenodo.org/badge/xxxx/bionode/bionode-sam.png
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/bionode/bionode-sam/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+* **Email** [mail@bionode.io](mailto:mail@bionode.io)
+* **Chat room** [http://gitter.im/bionode/bionode](http://gitter.im/bionode/bionode)
+* **IRC** #bionode on Freenode
+* **Twitter** [@bionode](http://twitter.com/@bionode)
