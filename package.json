@@ -42,7 +42,7 @@
   },
   "scripts": {
     "preinstall": "sam/build.sh",
-    "test": "standard && dependency-check .",
+    "test": "standard && dependency-check . && mocha",
     "coverage": "istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -R spec && rm -rf ./coverage",
     "coveralls": "istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls && rm -rf ./coverage"
   },
